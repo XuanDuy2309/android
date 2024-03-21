@@ -49,11 +49,13 @@ public class SVAdaptor extends RecyclerView.Adapter<SVAdaptor.ViewHolder> {
         holder.txtTitle3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String phoneNumber = "02838400532"; // Số điện thoại cần quay
-
-                Uri dialUri = Uri.parse("tel:" + phoneNumber);
-                Intent dialIntent = new Intent(Intent.ACTION_DIAL, dialUri);
-                holder.itemView.getContext().startActivity(dialIntent);
+                double latitude = 21.007773;
+                double longitude = 105.823882;
+                String label = "Trường DH Thủy Lợi";
+                String uriString = "geo:" + latitude + "," + longitude + "?q=" + latitude + "," + longitude + "(" + label + ")";
+                Uri locationUri = Uri.parse(uriString);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, locationUri);
+                holder.itemView.getContext().startActivity(mapIntent);
             }
         });
     }
